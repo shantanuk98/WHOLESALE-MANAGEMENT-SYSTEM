@@ -20,6 +20,17 @@ def lb(s):
 @app.route('/')
 @app.route('/index')
 def index():
+    stock={}
+    c = sqlite3.connect('app.db')
+    d = c.execute("select count(id) from Stock")
+    stock['no of stocks':str(list(d)[0][0])]
+    d = c.execute("select count(id) from Stock")
+
+
+
+
+
+
     return render_template('index.html')
 
 @app.route('/stock', methods=['GET','POST'])
