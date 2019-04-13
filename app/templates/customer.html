@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
+
+<div class="row">
+    <div class="col-sm-4">
 <h1>customer entry</h1>
     <form action="" method="post" novalidate>
         {{ form1.hidden_tag() }}
@@ -34,8 +37,8 @@
         </p>
         <p>{{ form1.submitCustomerEntry() }}</p>
     </form>
-
-<hr>
+</div>
+<div class="col-sm-4">
 
 <h1>customer update</h1>
     <form action="" method="post" novalidate>
@@ -74,7 +77,9 @@
         <p>{{ form3.submitCustomerUpdate() }}</p>
     </form>
 
-<hr>
+</div>
+<div class="col-sm-4">
+
 
  <h1>customer search</h1>
     <form action="" method="post" novalidate>
@@ -112,7 +117,10 @@
     </form>
 
 
+</div>
+</div>
 <hr>
+<div class="row">
     {% if s1: %}
         <table style="width:100%;
         border-collapse: separate;
@@ -144,5 +152,5 @@
             {% endfor %}
         </table>
     {% endif %}
-
+</div>
 {% endblock %}

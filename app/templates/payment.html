@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<div class="row">
+<div class="col-sm-4">
 <h1>Payment entry</h1>
     <form action="" method="post" novalidate>
         {{ form1.hidden_tag() }}
@@ -39,7 +41,9 @@
         <p>{{ form1.submitPaymentEntry() }}</p>
     </form>
 
-<hr>
+</div>
+
+<div class="col-sm-4">
 
 <h1>Payment update</h1>
     <form action="" method="post" novalidate>
@@ -78,7 +82,10 @@
         <p>{{ form2.submitPaymentUpdate() }}</p>
     </form>
 
-<hr>
+</div>
+
+<div class="col-sm-4">
+
 
 <h1>payment search</h1>
     <form action="" method="post" novalidate>
@@ -109,9 +116,10 @@
         </p>
         <p>{{ form3.submitPaymentSearch() }}</p>
     </form>
+</div>
+</div>
 
-
-<hr>
+<div class="row">
 
     {% if s1: %}
         <table style="width:100%;
@@ -146,5 +154,5 @@
             {% endfor %}
         </table>
     {% endif %}
-
+</div>
 {% endblock %}

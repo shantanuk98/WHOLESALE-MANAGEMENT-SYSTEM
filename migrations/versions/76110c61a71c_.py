@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 22bdbfe0e791
+Revision ID: 76110c61a71c
 Revises: 
-Create Date: 2019-04-14 00:44:42.404784
+Create Date: 2019-04-14 03:05:04.709289
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '22bdbfe0e791'
+revision = '76110c61a71c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -33,14 +33,14 @@ def upgrade():
     )
     op.create_table('payments',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('stock', sa.String(length=120), nullable=True),
+    sa.Column('stock', sa.String(length=120), nullable=False),
     sa.Column('customerPhone', sa.String(length=120), nullable=False),
     sa.Column('customerEmail', sa.String(length=120), nullable=False),
     sa.Column('customer', sa.String(length=120), nullable=False),
-    sa.Column('value', sa.Integer(), nullable=True),
-    sa.Column('qty', sa.Integer(), nullable=True),
-    sa.Column('amt', sa.Integer(), nullable=True),
-    sa.Column('amtpaid', sa.Integer(), nullable=True),
+    sa.Column('value', sa.Integer(), nullable=False),
+    sa.Column('qty', sa.Integer(), nullable=False),
+    sa.Column('amt', sa.Integer(), nullable=False),
+    sa.Column('amtpaid', sa.Integer(), nullable=False),
     sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
@@ -48,10 +48,10 @@ def upgrade():
     op.create_table('stock',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=140), nullable=False),
-    sa.Column('qty', sa.Integer(), nullable=True),
-    sa.Column('minqty', sa.Integer(), nullable=True),
-    sa.Column('sp', sa.Integer(), nullable=True),
-    sa.Column('cp', sa.Integer(), nullable=True),
+    sa.Column('qty', sa.Integer(), nullable=False),
+    sa.Column('minqty', sa.Integer(), nullable=False),
+    sa.Column('sp', sa.Integer(), nullable=False),
+    sa.Column('cp', sa.Integer(), nullable=False),
     sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')

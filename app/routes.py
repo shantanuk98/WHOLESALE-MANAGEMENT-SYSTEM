@@ -28,58 +28,55 @@ def stock():
         form = StockEntry()
         form1 = StockSearch()
         form2 = StockUpdate()
-        if form.validate_on_submit():
-            if form.submitStockEntry.data :
-                s1 = Stock(name = form.name.data,qty=form.qty.data,
-                    minqty=form.minqty.data,sp=form.sp.data,cp=form.cp.data)
-                db.session.add(s1)
-                db.session.commit()
-                return render_template('stock.html',title='STOCK',form=form,form1=form1,form2=form2)
-        if form2.validate_on_submit():
-            if form2.submitStockUpdate.data :
-                conn = sqlite3.connect('app.db')
-                name = form2.name.data
-                qty=form2.qty.data
-                minqty=form2.minqty.data
-                sp=form2.sp.data
-                cp=form2.cp.data
-                s2 = conn.execute("select * from Stock where name like '"+name+"';")
-                s = []
-                for i in s2:s.append(i)
-                s=list(s[0])
-                print(s)
-                if qty.isnumeric():s[2] = qty
-                if minqty.isnumeric():s[3] = minqty
-                if sp.isnumeric():s[4] = sp
-                if cp.isnumeric():s[5]=cp
-                s3 = Stock.query.filter_by(name=name).first()
-                print(s3)
-                s3.qty = s[2]
-                s3.minqty = s[3]
-                s3.sp = s[4]
-                s3.cp = s[5]
-                db.session.commit()
-                return render_template('stock.html',title='STOCK',form=form,form1=form1,form2=form2)
-        if form1.validate_on_submit():
-            if form1.submitStockSearch.data :
-                conn = sqlite3.connect('app.db')
-                name=r(form1.name.data)
-                lbqty = lb(form1.lbqty.data)
-                ubqty = ub(form1.ubqty.data)
-                lbminqty = lb(form1.lbminqty.data)
-                ubminqty = ub(form1.ubminqty.data)
-                lbsp = lb(form1.lbsp.data)
-                ubsp = ub(form1.ubsp.data)
-                lbcp = lb(form1.lbcp.data)
-                ubcp = ub(form1.ubcp.data)
-                t="select * from Stock where name like '"+name+"' and qty <= "+ubqty+" and qty >= "+lbqty+" and minqty <= "+ubminqty+" and minqty >= "+lbminqty+" and sp <= "+ubsp+" and sp >= "+lbsp+" and sp <= "+ubcp+" and cp >= "+lbcp+";"
-                print(t)
-                s2 = conn.execute(t)
-                s1=[]
-                for i in s2:s1.append(i)
-                conn.close()
-                print(s1)
-                return render_template('stock.html',title='STOCK',form=form,form1=form1,form2=form2,s1=s1)
+        if form.submitStockEntry.data :
+            s1 = Stock(name = form.name.data,qty=form.qty.data,
+                minqty=form.minqty.data,sp=form.sp.data,cp=form.cp.data)
+            db.session.add(s1)
+            db.session.commit()
+            return render_template('stock.html',title='STOCK',form=form,form1=form1,form2=form2)
+        if form2.submitStockUpdate.data :
+            conn = sqlite3.connect('app.db')
+            name = form2.name.data
+            qty=form2.qty.data
+            minqty=form2.minqty.data
+            sp=form2.sp.data
+            cp=form2.cp.data
+            s2 = conn.execute("select * from Stock where name like '"+name+"';")
+            s = []
+            for i in s2:s.append(i)
+            s=list(s[0])
+            print(s)
+            if qty.isnumeric():s[2] = qty
+            if minqty.isnumeric():s[3] = minqty
+            if sp.isnumeric():s[4] = sp
+            if cp.isnumeric():s[5]=cp
+            s3 = Stock.query.filter_by(name=name).first()
+            print(s3)
+            s3.qty = s[2]
+            s3.minqty = s[3]
+            s3.sp = s[4]
+            s3.cp = s[5]
+            db.session.commit()
+            return render_template('stock.html',title='STOCK',form=form,form1=form1,form2=form2)
+        if form1.submitStockSearch.data :
+            conn = sqlite3.connect('app.db')
+            name=r(form1.name.data)
+            lbqty = lb(form1.lbqty.data)
+            ubqty = ub(form1.ubqty.data)
+            lbminqty = lb(form1.lbminqty.data)
+            ubminqty = ub(form1.ubminqty.data)
+            lbsp = lb(form1.lbsp.data)
+            ubsp = ub(form1.ubsp.data)
+            lbcp = lb(form1.lbcp.data)
+            ubcp = ub(form1.ubcp.data)
+            t="select * from Stock where name like '"+name+"' and qty <= "+ubqty+" and qty >= "+lbqty+" and minqty <= "+ubminqty+" and minqty >= "+lbminqty+" and sp <= "+ubsp+" and sp >= "+lbsp+" and sp <= "+ubcp+" and cp >= "+lbcp+";"
+            print(t)
+            s2 = conn.execute(t)
+            s1=[]
+            for i in s2:s1.append(i)
+            conn.close()
+            print(s1)
+            return render_template('stock.html',title='STOCK',form=form,form1=form1,form2=form2,s1=s1)
         return render_template('stock.html',title='STOCK',form1=form1,form2=form2,form=form)
     except Exception as e:
         print("in customer ",str(e))
@@ -132,7 +129,7 @@ def payment():
         form3 = PaymentSearch()
         form2 = PaymentUpdate()
         if form1.submitPaymentEntry.data :
-            s1 = Payments(stock = form1.stockName.data,customerPhone=form1.customerPhonenumber.data,
+            s1 = Payments(stock = form1.stockName.data,customerPhone=form1.customerPhonenumber.data,\
                 customerEmail=form1.customerEmail.data,customer=form1.customerName.data,value=form1.value.data\
                 ,qty=form1.qty.data,amt=form1.amount.data,amtpaid=form1.paid.data)
             db.session.add(s1)

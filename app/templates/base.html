@@ -1,6 +1,8 @@
 <html>
     <head>
-    <link rel="stylesheet" href="base.css">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
       {% if title %}
       <title>{{ title }}</title>
       {% else %}
@@ -8,22 +10,36 @@
       {% endif %}
     </head>
 
-    <body>
+    <body >
+        <div style="margin: 3%">
+            <div class="jumbotron" style="padding:2%">
         {% if title %}
         <h1>{{ title }}</h1>
         {% else %}
         <h1>WHOLESALE MANAGEMENT SYSTEM</h1>
         {% endif %}
+    </div>
+        <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <ul class="nav navbar-nav">
+                       <li> <a href="{{ url_for('index') }}">Home</a></li>
+                      <li><a href="{{ url_for('stock') }}">stock</a></li>  
+                        <li><a href="{{ url_for('customer') }}">customer</a></li>
+                        <li><a href="{{ url_for('supplier') }}">suppliers</a></li>
+                        <li><a href="{{ url_for('payment') }}">transaction history</a></li>
+                        <li><a href="{{ url_for('itb') }}">items to buy</a></li>
+                        <li><a href="{{ url_for('defaulter') }}">defaulter</a></li>
+                  </ul>
+                </div>
+              </nav>
         <div>
-            <a href="{{ url_for('index') }}">Home</a>
-            <a href="{{ url_for('stock') }}">stock</a>
-            <a href="{{ url_for('customer') }}">customer</a>
-            <a href="{{ url_for('supplier') }}">suppliers</a>
-            <a href="{{ url_for('payment') }}">transaction history</a>
-            <a href="{{ url_for('itb') }}">items to buy</a>
-            <a href="{{ url_for('defaulter') }}">defaulter</a>
+            
         </div>
             <hr>
-        {% block content %}{% endblock %}
+        <div style="margin: 5%" class ="div">
+        {% block content %}
+        {% endblock %}
+        </div>
+        </div>
     </body>
 </html>
