@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Stock entry</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=32) }}<br>
+            {% for error in form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.qty.label }}<br>
+            {{ form.qty(size=32) }}<br>
+            {% for error in form.qty.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.minqty.label }}<br>
+            {{ form.minqty(size=32) }}<br>
+            {% for error in form.minqty.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.sp.label }}<br>
+            {{ form.sp(size=32) }}<br>
+            {% for error in form.sp.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.cp.label }}<br>
+            {{ form.cp(size=32) }}<br>
+            {% for error in form.cp.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submitStockEntry() }}</p>
+    </form>
+<hr>
+<h1>Stock update</h1>
+    <form action="" method="post" novalidate>
+        {{ form2.hidden_tag() }}
+        <h3>where </h3>
+        <p>
+            {{ form2.name.label }}<br>
+            {{ form2.name(size=32) }}<br>
+            {% for error in form2.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <h3>update</h3>
+        <p>
+            {{ form2.qty.label }}<br>
+            {{ form2.qty(size=32) }}<br>
+        </p>
+        <p>
+            {{ form2.minqty.label }}<br>
+            {{ form2.minqty(size=32) }}<br>
+        </p>
+        <p>
+            {{ form2.sp.label }}<br>
+            {{ form2.sp(size=32) }}<br>
+        </p>
+        <p>
+            {{ form2.cp.label }}<br>
+            {{ form2.cp(size=32) }}<br>
+        </p>
+        <p>{{ form2.submitStockUpdate() }}</p>
+    </form>
+<hr>
+<h1>Stock search</h1>
+    <form action="" method="post" novalidate>
+        {{ form1.hidden_tag() }}
+        <p>
+            {{ form1.name.label }}<br>
+            {{ form1.name(size=32) }}<br>
+            {% for error in form1.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form1.lbqty(size=10) }}
+            <= quantity <=
+            {{ form1.ubqty(size=10) }}<br>
+        </p>
+        <p>
+            {{ form1.lbminqty(size=10) }}
+            <= minimum quantity <=
+            {{ form1.ubminqty(size=10) }}<br>
+        </p>
+        <p>
+            {{ form1.lbsp(size=10) }}
+            <= selling price <=
+            {{ form1.ubsp(size=10) }}<br>
+        </p>
+        <p>
+            {{ form1.lbcp(size=10) }}
+            <= cost price <=
+            {{ form1.ubcp(size=10) }}<br>
+        </p>
+        <p>{{ form1.submitStockSearch() }}</p>
+    </form>
+
+        {% if s1: %}
+        <table style="width:100%;border: 1px solid black;background-color: #f1f1c1">
+            {% for s in s1 %}
+            <tr>
+                <th>{{ s[0] }}</th>
+                <th>{{ s[1] }}</th> 
+                <th>{{ s[2] }}</th>
+                <th>{{ s[3] }}</th>
+                <th>{{ s[4] }}</th> 
+                <th>{{ s[5] }}</th>
+            </tr>
+            {% endfor %}
+          </table>
+          {% endif %}
+
+{% endblock %}

@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>supplier entry</h1>
+    <form action="" method="post" novalidate>
+        {{ form1.hidden_tag() }}
+        <p>
+            {{ form1.name.label }}<br>
+            {{ form1.name(size=32) }}<br>
+            
+        </p>
+        <p>
+                {{ form1.stockName.label }}<br>
+                {{ form1.stockName(size=32) }}<br>
+                
+            </p>
+        <p>
+            {{ form1.email.label }}<br>
+            {{ form1.email(size=32) }}<br>
+            
+        </p>
+        <p>
+            {{ form1.phonenumber.label }}<br>
+            {{ form1.phonenumber(size=32) }}<br>
+            
+        </p>
+        <p>
+            {{ form1.city.label }}<br>
+            {{ form1.city(size=32) }}<br>
+            
+        </p>
+        <p>
+            {{ form1.state.label }}<br>
+            {{ form1.state(size=32) }}<br>
+            
+        </p>
+        <p>
+            {{ form1.country.label }}<br>
+            {{ form1.country(size=32) }}<br>
+            
+        </p>
+        <p>{{ form1.submitSupplierEntry() }}</p>
+    </form>
+
+<hr>
+
+<h1>supplier update</h1>
+    <form action="" method="post" novalidate>
+        {{ form3.hidden_tag() }}
+        <h2>where</h2>
+        <p>
+            {{ form3.email.label }}<br>
+            {{ form3.email(size=32) }}<br>
+            
+        </p>
+        <h2>update</h2>
+        <p>
+            {{ form3.name.label }}<br>
+            {{ form3.name(size=32) }}<br>
+            
+        </p>
+        <p>
+                {{ form3.stockName.label }}<br>
+                {{ form3.stockName(size=32) }}<br>
+                
+            </p>
+        
+        <p>
+            {{ form3.phonenumber.label }}<br>
+            {{ form3.phonenumber(size=32) }}<br>
+            
+        </p>
+        <p>
+            {{ form3.city.label }}<br>
+            {{ form3.city(size=32) }}<br>
+            
+        </p>
+        <p>
+            {{ form3.state.label }}<br>
+            {{ form3.state(size=32) }}<br>
+            
+        </p>
+        <p>
+            {{ form3.country.label }}<br>
+            {{ form3.country(size=32) }}<br>
+            
+        </p>
+        <p>{{ form3.submitSupplierUpdate() }}</p>
+    </form>
+
+<hr>
+
+<h1>supplier search</h1>
+    <form action="" method="post" novalidate>
+        {{ form2.hidden_tag() }}
+        <p>
+            {{ form2.name.label }}<br>
+            {{ form2.name(size=32) }}<br>
+            
+        </p>
+        <p>
+                {{ form2.stockName.label }}<br>
+                {{ form2.stockName(size=32) }}<br>
+                
+            </p>
+        <p>
+            {{ form2.email.label }}<br>
+            {{ form2.email(size=32) }}<br>
+            
+        </p>
+        <p>
+            {{ form2.phonenumber.label }}<br>
+            {{ form2.phonenumber(size=32) }}<br>
+            
+        </p>
+        <p>
+            {{ form2.city.label }}<br>
+            {{ form2.city(size=32) }}<br>
+            
+        </p>
+        <p>
+            {{ form2.state.label }}<br>
+            {{ form2.state(size=32) }}<br>
+            
+        </p>
+        <p>
+            {{ form2.country.label }}<br>
+            {{ form2.country(size=32) }}<br>
+            
+        </p>
+        <p>{{ form2.submitSupplierSearch() }}</p>
+    </form>
+
+<hr>
+
+    {% if s1: %}
+        <table style="width:100%">
+            {% for s in s1 %}
+            <tr>
+              <th>{{ s[0] }}</th>
+              <th>{{ s[1] }}</th> 
+              <th>{{ s[2] }}</th>
+              <th>{{ s[3] }}</th>
+              <th>{{ s[4] }}</th> 
+              <th>{{ s[5] }}</th>
+              <th>{{ s[6] }}</th>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+{% endblock %}

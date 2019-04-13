@@ -1,0 +1,27 @@
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }}</title>
+      {% else %}
+      <title>WHOLESALE MANAGEMENT SYSTEM</title>
+      {% endif %}
+    </head>
+    <body>
+        {% if title %}
+        <h1>{{ title }}</h1>
+        {% else %}
+        <h1>WHOLESALE MANAGEMENT SYSTEM</h1>
+        {% endif %}
+        <div>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('stock') }}">stock</a>
+            <a href="{{ url_for('customer') }}">customer</a>
+            <a href="{{ url_for('supplier') }}">suppliers</a>
+            <a href="{{ url_for('payment') }}">transaction history</a>
+            <a href="{{ url_for('itb') }}">items to buy</a>
+            <a href="{{ url_for('defaulter') }}">defaulter</a>
+        </div>
+            <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if s1: %}
+<table style="width:100%;border: 1px solid black;background-color: #f1f1c1">
+    {% for s in s1 %}
+    <tr>
+        <th>{{ s[0] }}</th>
+        <th>{{ s[1] }}</th> 
+        <th>{{ s[2] }}</th>
+        <th>{{ s[3] }}</th>
+        <th>{{ s[4] }}</th> 
+        <th>{{ s[5] }}</th>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+
+{% endblock %}
