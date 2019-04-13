@@ -2,12 +2,6 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired
 
-class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    remember_me = BooleanField('Remember Me')
-    submitLoginForm = SubmitField('Sign In')
-
 class CustomerEntry(FlaskForm):
     name = StringField('Customer name' )
     email = StringField('email' )
@@ -70,7 +64,7 @@ class StockSearch(FlaskForm):
 
 
 class SupplierEntry(FlaskForm):
-    name = StringField('Customer name' )
+    name = StringField('supplier name' )
     stockName = StringField('Stock name' )
     email = StringField('email' )
     phonenumber = StringField('phone' )
@@ -80,7 +74,7 @@ class SupplierEntry(FlaskForm):
     submitSupplierEntry = SubmitField('Enter supplier details')
 
 class SupplierUpdate(FlaskForm):
-    name = StringField('Customer name' )
+    name = StringField('supplier name' )
     stockName = StringField('Stock name' )
     email = StringField('email' )
     phonenumber = StringField('phone' )
@@ -90,8 +84,8 @@ class SupplierUpdate(FlaskForm):
     submitSupplierUpdate = SubmitField('Update supplier details')
 
 class SupplierSearch(FlaskForm):
-    name = StringField('Customer name' )
-    stockName = StringField('Customer name' )
+    name = StringField('Supplier name' )
+    stockName = StringField('stock name' )
     email = StringField('email' )
     phonenumber = StringField('phone' )
     city = StringField('city' )
@@ -111,7 +105,7 @@ class PaymentEntry(FlaskForm):
     submitPaymentEntry = SubmitField('enter payment details')
 
 class PaymentUpdate(FlaskForm):
-    id = StringField('customerId')
+    id = StringField('Id')
     customerName = StringField('Customer name' )
     customerPhonenumber = StringField('Customer phonenumber' )
     customerEmail = StringField('Customer email' )

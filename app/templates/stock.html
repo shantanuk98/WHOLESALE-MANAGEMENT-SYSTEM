@@ -106,7 +106,20 @@
     </form>
 
         {% if s1: %}
-        <table style="width:100%;border: 1px solid black;background-color: #f1f1c1">
+        <table style="width:100%;
+        border-collapse: separate;
+        border-spacing: 2px;
+        border-color: brown;
+        border: 1px solid black;
+        background-color: #aaaa88">
+            <tr>
+                <th>ID</th>
+                <th>STOCK NAME</th>
+                <th>QUANTITY</th>
+                <th>MINIMUM QUANTITY</th>
+                <th>SELLING PRICE</th>
+                <th>COST PRICE</th>
+            </tr>
             {% for s in s1 %}
             <tr>
                 <th>{{ s[0] }}</th>

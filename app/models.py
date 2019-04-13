@@ -9,7 +9,7 @@ class Customer(db.Model):
     city = db.Column(db.String(120))
     state = db.Column(db.String(120))
     country = db.Column(db.String(120))
-    outstandingAmount = db.Column(db.String(120),default=0)
+    outstandingAmount = db.Column(db.Integer,default=0)
 
     def __repr__(self):
         return '<customer {}>'.format(self.name)

@@ -134,7 +134,22 @@
 <hr>
 
     {% if s1: %}
-        <table style="width:100%">
+        <table style="width:100%;
+        border-collapse: separate;
+        border-spacing: 2px;
+        border-color: brown;
+        border: 1px solid black;
+        background-color: #aaaa88">
+            <tr>
+                <th>SUPPLIER ID</th>
+                <th>SUPPLIER NAME</th>
+                <th>STOCK</th>
+                <th>EMAIL</th>
+                <th>PHONE NO.</th>
+                <th>CITY</th>
+                <th>STATE</th>
+                <th>COUNTRY</th>
+            </tr>
             {% for s in s1 %}
             <tr>
               <th>{{ s[0] }}</th>
@@ -144,6 +159,7 @@
               <th>{{ s[4] }}</th> 
               <th>{{ s[5] }}</th>
               <th>{{ s[6] }}</th>
+              <th>{{ s[7] }}</th>
             </tr>
             {% endfor %}
         </table>
