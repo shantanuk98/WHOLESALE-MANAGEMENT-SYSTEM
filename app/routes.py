@@ -17,20 +17,18 @@ def lb(s):
     if s.isnumeric():return str(s)
     else:return "0"
 
-@app.route('/')
+
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        return redirect(url_for('index'))
+    else:    return render_template('login.html',form=form)
+    return render_template('login.html',form=form)
+
 @app.route('/index')
 def index():
-    stock={}
-    c = sqlite3.connect('app.db')
-    d = c.execute("select count(id) from Stock")
-    stock['no of stocks':str(list(d)[0][0])]
-    d = c.execute("select count(id) from Stock")
-
-
-
-
-
-
     return render_template('index.html')
 
 @app.route('/stock', methods=['GET','POST'])
