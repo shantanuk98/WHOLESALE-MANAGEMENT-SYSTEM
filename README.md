@@ -26,4 +26,4 @@ now you can run the app by
 
 $flask run
 
-visit "localhost:5000" on your browser to see the webite
+visit "localhost:5000" on your browser to see the website
