@@ -6,16 +6,22 @@ from app.models import *
 from sqlalchemy import text,update
 import  sqlite3
 
+
+
 def t(s,t1):
     if s=="":return t1
     else:return s
+
 def r(s):return '%'+s+'%'
+
 def ub(s):
     if s.isnumeric():return str(s)
     else:return "100000000000000000"
+
 def lb(s):
     if s.isnumeric():return str(s)
     else:return "0"
+
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -24,12 +30,35 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         return redirect(url_for('index'))
-    else:    return render_template('login.html',form=form)
+    else:return render_template('login.html',form=form)
     return render_template('login.html',form=form)
+
+
 
 @app.route('/index')
 def index():
-    return render_template('index.html')
+    c = sqlite3.connect('app.db')
+    l={}
+    st = {}
+    l["STOCK DETAILS"] = st
+    st["Stock count : "]=list(c.execute("select count(id) from Stock"))[0][0]
+    st["Total Quantity : "] = round(list(c.execute("select sum(qty) from Stock"))[0][0],2)
+    st["Average Quantity : "] = round(list(c.execute("select avg(qty) from Stock"))[0][0],2)
+    st["Total selling price : "] = round(list(c.execute("select sum(sp) from Stock"))[0][0],2)
+    st["Average selling price : "] = round(list(c.execute("select avg(sp) from Stock"))[0][0],2)
+    st["Total cost price : "] = round(list(c.execute("select sum(cp) from Stock"))[0][0],2)
+    st["Average cost price : "] = round(list(c.execute("select avg(cp) from Stock"))[0][0],2)
+    st["most recently added : "] = list(c.execute("select name from Stock order by timestamp desc"))[0][0]
+
+    t = {}
+    l["TRANSACTION HISTORY"] = t
+    t["Payments count : "]=list(c.execute("select count(id) from Payments"))[0][0]
+    t["Total revenue earned : "] = round(list(c.execute("select sum(amt) from Payments"))[0][0],2)
+    t["most recentl sale : "] = list(c.execute("select stock from Payments order by timestamp desc"))[0][0]
+
+    return render_template('index.html',l=l)
+
+
 
 @app.route('/stock', methods=['GET','POST'])
 def stock():
@@ -92,6 +121,7 @@ def stock():
         return render_template('stock.html',title='STOCK',form1=form1,form2=form2,form=form)
 
 
+
 @app.route('/customer', methods=['GET','POST'])
 def customer():
     try:
@@ -130,6 +160,8 @@ def customer():
     except Exception as e:
         print("in customer = ",str(e))
         return render_template('customer.html',title='CUSTOMER',form1=form1,form2=form2,form3=form3)
+
+
 
 @app.route('/payment', methods=['GET','POST'])
 def payment():
@@ -181,6 +213,8 @@ def payment():
         print("in payment = ",str(e))
         return render_template('payment.html',title='STOCK',form1=form1,form2=form2,form3=form3)
 
+
+
 @app.route('/itb', methods=['GET','POST'])
 def itb():
     try:
@@ -193,6 +227,7 @@ def itb():
     except Exception as e:
         print("in itb = ",str(e))
         return render_template('itb.html',title='ITEMS TO BUY')
+
 
 
 @app.route('/supplier', methods=['GET','POST'])
@@ -225,6 +260,8 @@ def supplier():
     except Exception as e:
         print("in supplier = ",str(e))
         return render_template('supplier.html',title='Supplier',form1=form1,form2=form2,form3=form3)
+
+
 
 @app.route('/defaulter', methods=['GET','POST'])
 def defaulter():

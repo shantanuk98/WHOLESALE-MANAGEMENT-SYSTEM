@@ -2,6 +2,19 @@
 
 {%block content%}
 
-hello from shantanu
+<div class="panel panel-default">
+    {% for j in l %}
+    <div class="panel panel-default">
+        <div class="panel-heading">{{j}}</div>
+        <div class="panel-body">
+            {% for i in l[j]:%}
+            {{ i }}
+            {{ l[j][i] }}<br>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
 
 {%endblock%}
