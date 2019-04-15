@@ -95,24 +95,24 @@
             {{ form3.stockName(size=32) }}<br>
         </p>
         <p>
-            {{ form3.lbqty(size=10) }}
+            {{ form3.lbqty(size=6) }}
             <= quantity <=
-            {{ form3.ubqty(size=10) }}
+            {{ form3.ubqty(size=6) }}
         </p>
         <p>
-            {{ form3.lbvalue(size=10) }}
+            {{ form3.lbvalue(size=6) }}
             <= value <=
-            {{ form3.ubvalue(size=10) }}
+            {{ form3.ubvalue(size=6) }}
         </p>
         <p>
-            {{ form3.lbamount(size=10) }}
+            {{ form3.lbamount(size=6) }}
             <= amount <=
-            {{ form3.ubamount(size=10) }}
+            {{ form3.ubamount(size=6) }}
         </p>
         <p>
-            {{ form3.lbpaid(size=10) }}
+            {{ form3.lbpaid(size=6) }}
             <= amount paid <=
-            {{ form3.ubpaid(size=10) }}
+            {{ form3.ubpaid(size=6) }}
         </p>
         <p>{{ form3.submitPaymentSearch() }}</p>
     </form>
@@ -122,7 +122,7 @@
 <div class="row">
 
     {% if s1: %}
-        <table style="width:100%;
+        <table style="width:60%;
         border-collapse: separate;
         border-spacing: 2px;
         border-color: brown;
